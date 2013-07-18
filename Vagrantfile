@@ -90,6 +90,13 @@ Vagrant.configure("2") do |config|
   #   # You may also specify custom JSON attributes:
   #   chef.json = { :mysql_password => "foo" }
   # end
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = %w(chef-repo/cookbooks chef-repo/site-cookbooks)
+    chef.add_recipe "apt::default"
+    chef.add_recipe "ruby_build"
+    chef.add_recipe "rbenv::system"
+    chef.add_recipe "sinatra-app"
+  end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
