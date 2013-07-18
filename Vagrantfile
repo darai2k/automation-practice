@@ -7,6 +7,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
+  # $ vagrant box add ubuntu http://grahamc.com/vagrant/ubuntu-12.04.2-i386-chef-11-omnibus.box
   config.vm.box = "ubuntu"
 
   # The url from where the 'config.vm.box' box will be fetched if it
