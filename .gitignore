@@ -1,3 +1,4 @@
 .vagrant/
 chef-repo/cookbooks/*
 !chef-repo/cookbooks/.gitkeep
+.bundle
