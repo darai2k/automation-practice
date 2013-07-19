@@ -10,4 +10,7 @@ end
 
 group :development, :test do
   gem "serverspec"
+  gem "capybara"
+  gem "capybara-webkit"
+  gem "selenium-webdriver"
 end

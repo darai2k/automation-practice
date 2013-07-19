@@ -1,3 +1,6 @@
+require 'capybara'
+require 'capybara/rspec'
+require 'capybara/webkit'
 require 'serverspec'
 require 'pathname'
 require 'net/ssh'
@@ -5,7 +8,13 @@ require 'net/ssh'
 include Serverspec::Helper::Ssh
 include Serverspec::Helper::DetectOS
 
+# Capybara.default_driver = :webkit
+Capybara.default_driver = :selenium
+Capybara.app_host = "http://192.168.50.2"
+Capybara.run_server = false
+
 RSpec.configure do |c|
+  # serverspec
   if ENV['ASK_SUDO_PASSWORD']
     require 'highline/import'
     c.sudo_password = ask("Enter sudo password: ") { |q| q.echo = false }
@@ -25,8 +34,8 @@ RSpec.configure do |c|
       c.host  = host
       options = Net::SSH::Config.for(c.host)
       user    = options[:user] || Etc.getlogin
-      
-      vagrant_up = `vagrant up default`
+
+      `vagrant up default`
       config = `vagrant ssh-config default`
       if config != ''
         config.each_line do |line|
@@ -41,7 +50,7 @@ RSpec.configure do |c|
           end
         end
       end
-    
+
       c.ssh   = Net::SSH.start(c.host, user, options)
     end
   end
