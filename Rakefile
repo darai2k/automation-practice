@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
+
 desc "Setup bundle and berks"
 task :setup do
   base_dir = File.expand_path(File.dirname(__FILE__))

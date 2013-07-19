@@ -109,6 +109,7 @@ GEM
       systemu
       yajl-ruby
     rack (1.5.2)
+    rake (10.1.0)
     rbzip2 (0.2.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -178,4 +179,5 @@ DEPENDENCIES
   berkshelf
   chef
   knife-solo
+  rake
   serverspec
