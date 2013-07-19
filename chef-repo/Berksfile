@@ -2,4 +2,3 @@ site :opscode
 
 cookbook "apt", github: "opscode-cookbooks/apt"
 cookbook "rbenv", github: "fnichol/chef-rbenv"
-cookbook "handler"
